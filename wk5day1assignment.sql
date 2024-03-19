@@ -17,10 +17,10 @@ SELECT count(*) FROM payment p WHERE amount BETWEEN 3.99 AND 5.99
 
 
 
--- QUESTION 3 --
--- Answer:
+-- QUESTION 3 -- What films have exactly 7 copies? (search in inventory)
+-- Answer: 
 -- Query:
-
+SELECT film_id FROM inventory i WHERE count(DISTINCT film_id) = 7; 
 
 
 
@@ -47,7 +47,7 @@ SELECT count(DISTINCT address) FROM address a
 
 
 
--- QUESTION 7 --
+-- QUESTION 7 -- What film has the most actors in it? (use film_actor table and get film_id)
 -- Answer:
 -- Query:
 
@@ -59,12 +59,17 @@ SELECT count(DISTINCT address) FROM address a
 SELECT count(last_name) FROM customer c WHERE store_id = '1' AND last_name LIKE '%es';
 
 
--- QUESTION 9 --
--- Answer:
+-- QUESTION 9 -- 
+-- Answer: 
+-- Query: 
+SELECT count(amount) FROM payment WHERE customer_id BETWEEN 380 AND 430 GROUP BY amount, customer_id 
+
+
+
+
+-- QUESTION 10 -- Within the film table, how many rating categories are there? And what rating has the most movies total?
+-- Answer: 5 ratings, NC-17 has most films 
 -- Query:
+SELECT DISTINCT rating FROM film f; 
 
-
-
--- QUESTION 10 --
--- Answer:
--- Query:
+SELECT film_id, rating  FROM film GROUP BY film_id, rating ORDER BY rating;
